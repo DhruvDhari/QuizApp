@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './App.css';
 import FullScreenPrompt from './components/FullScreenPrompt';
 import Question from './components/Question';
@@ -23,6 +23,27 @@ const App = () => {
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [score, setScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const intervalRef = useRef(null);
+
+  const calculateScore = useCallback(() => {
+    let score = 0;
+    questions.forEach((question, index) => {
+      if (answers[index] === question.answer) {
+        score += 1;
+      }
+    });
+    setScore(score);
+  }, [answers]);
+
+  const finalizeQuiz = useCallback(() => {
+    calculateScore();
+    setIsQuizCompleted(true);
+  }, [calculateScore]);
+
+  const handleTimeUp = useCallback(() => {
+    finalizeQuiz();
+    alert('Time is up!');
+  }, [finalizeQuiz]);
 
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -40,10 +61,26 @@ const App = () => {
   }, [isQuizCompleted]);
 
   useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer > 0) {
+          localStorage.setItem('timer', prevTimer - 1);
+          return prevTimer - 1;
+        } else {
+          clearInterval(intervalRef.current);
+          handleTimeUp();
+          return 0;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalRef.current);
+  }, [handleTimeUp]);
+
+  useEffect(() => {
     localStorage.setItem('currentQuestion', currentQuestion);
-    localStorage.setItem('timer', timer);
     localStorage.setItem('answers', JSON.stringify(answers));
-  }, [currentQuestion, timer, answers]);
+  }, [currentQuestion, answers]);
 
   const handleOptionClick = (option) => {
     setAnswers((prevAnswers) => {
@@ -65,16 +102,6 @@ const App = () => {
     }
   };
 
-  const calculateScore = () => {
-    let score = 0;
-    questions.forEach((question, index) => {
-      if (answers[index] === question.answer) {
-        score += 1;
-      }
-    });
-    setScore(score);
-  };
-
   const handleSubmit = () => {
     const unansweredQuestions = questions.length - Object.keys(answers).length;
     if (unansweredQuestions > 0) {
@@ -82,16 +109,6 @@ const App = () => {
     } else {
       finalizeQuiz();
     }
-  };
-
-  const finalizeQuiz = () => {
-    calculateScore();
-    setIsQuizCompleted(true);
-  };
-
-  const handleTimeUp = () => {
-    finalizeQuiz();
-    alert('Time is up!');
   };
 
   const requestFullScreen = () => {

@@ -1,0 +1,62 @@
+[
+  {
+    "question": "What is the output of the following code?\n\nconsole.log(0.1 + 0.2 === 0.3);",
+    "options": ["true", "false", "undefined", "TypeError"],
+    "answer": "false"
+  },
+  {
+    "question": "What will be the output of the following code?\n\nconsole.log(typeof NaN);",
+    "options": ["number", "undefined", "object", "NaN"],
+    "answer": "number"
+  },
+  {
+    "question": "Which of the following methods modifies the original array?\n\nArray.prototype.map(), Array.prototype.filter(), Array.prototype.slice(), Array.prototype.splice()",
+    "options": ["map", "filter", "slice", "splice"],
+    "answer": "splice"
+  },
+  {
+    "question": "What is the output of the following code?\n\nconsole.log([] + []);",
+    "options": ["[]", "undefined", "empty string", "TypeError"],
+    "answer": "empty string"
+  },
+  {
+    "question": "What does the 'this' keyword refer to in the context of an event handler function?",
+    "options": ["The element that the event is bound to", "The global object", "The parent element", "The event object"],
+    "answer": "The element that the event is bound to"
+  },
+  {
+    "question": "What is the output of the following code?\n\nconsole.log((function(){return typeof arguments;})());",
+    "options": ["object", "array", "undefined", "function"],
+    "answer": "object"
+  },
+  {
+    "question": "What is the difference between '==' and '===' in JavaScript?",
+    "options": [
+      "'==' checks for equality without type coercion, while '===' checks for equality with type coercion",
+      "'==' checks for equality with type coercion, while '===' checks for equality without type coercion",
+      "Both are the same",
+      "'==' checks only values, '===' checks only types"
+    ],
+    "answer": "'==' checks for equality with type coercion, while '===' checks for equality without type coercion"
+  },
+  {
+    "question": "What will be the output of the following code?\n\nconsole.log([] == ![]);",
+    "options": ["true", "false", "TypeError", "ReferenceError"],
+    "answer": "true"
+  },
+  {
+    "question": "What does the 'use strict' directive do in JavaScript?",
+    "options": [
+      "Enables strict mode which catches common coding mistakes and 'unsafe' actions",
+      "Automatically optimizes the code for performance",
+      "Enables support for modern JavaScript features",
+      "Disables type coercion"
+    ],
+    "answer": "Enables strict mode which catches common coding mistakes and 'unsafe' actions"
+  },
+  {
+    "question": "What is the result of the following code?\n\nconsole.log([1, 2, 3] + [4, 5, 6]);",
+    "options": ["[1, 2, 3, 4, 5, 6]", "[1, 2, 3][4, 5, 6]", "1,2,34,5,6", "undefined"],
+    "answer": "1,2,34,5,6"
+  }
+]

@@ -128,7 +128,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className='app-container' >
       <h1>Quiz</h1>
       <Timer initialTime={timer} onTimeUp={handleTimeUp} />
       <div className="question-container">
@@ -144,14 +144,16 @@ const App = () => {
         <button onClick={handlePreviousQuestion} disabled={currentQuestion === 0}>Previous</button>
         <button onClick={handleNextQuestion} disabled={currentQuestion === questions.length - 1}>Next</button>
       </div>
-      <button onClick={handleSubmit}>Submit</button>
+      <button className='submit-button' onClick={handleSubmit}>Submit</button>
 
       {showModal && (
         <div className="modal">
           <div className="modal-content">
             <p>{questions.length - Object.keys(answers).length} questions are not attempted. Are you sure you want to submit?</p>
+            <div className="submit-buttons">
             <button onClick={finalizeQuiz}>Yes</button>
             <button onClick={closeModal}>No</button>
+            </div>
           </div>
         </div>
       )}

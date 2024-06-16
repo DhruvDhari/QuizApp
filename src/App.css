@@ -2,6 +2,23 @@ body {
   font-family: Arial, sans-serif;
 }
 
+h1{
+  font-size: 80px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.score{
+  margin: auto;
+  font-size: 40px;
+  text-align: center;
+  color: aqua;
+  background-color: rgb(34, 34, 34);
+  border: 2px solid aqua;
+  box-shadow: 2px 12px 20px aqua;
+
+}
+
 .fullscreen-prompt {
   display: flex;
   flex-direction: column;
@@ -23,6 +40,7 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  border-radius: 3px;
 }
 
 p {
@@ -51,6 +69,13 @@ button.selected {
   background-color: #4caf50;
   color: white;
 }
+.submit-button{
+  background-color: #4caf50;
+  color: white;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
 
 .modal {
   position: fixed;
@@ -71,3 +96,23 @@ button.selected {
   text-align: center;
 }
 
+.app-container{
+  margin: 5px;
+  height: 90vh;
+  position: relative;
+}
+
+.navigation-buttons{
+  
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0%;
+}
+
+.submit-buttons{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

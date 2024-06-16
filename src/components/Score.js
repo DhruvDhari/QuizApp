@@ -2,9 +2,9 @@ import React from 'react';
 
 const Score = ({ score, totalQuestions }) => {
   return (
-    <div>
+    <div >
       <h1>Your Score</h1>
-      <p>You scored {score} out of {totalQuestions}</p>
+      <button className='score'>You scored {score} out of {totalQuestions}</button>
     </div>
   );
 };
